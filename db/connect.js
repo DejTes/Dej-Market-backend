@@ -1,9 +1,19 @@
-// setting up a connection to a MongoDB database using the Mongoose 
+
+
 const mongoose = require('mongoose');
 
-//This function, connectDB, takes a url argument, which is a MongoDB connection string, and connects to the database using Mongoose's connect method.
-const connectDB = (url) => {
-  return mongoose.connect(url);
-};
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+        })
+
+        console.log(`mongoDB connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.log(error.message);
+        process.exit(1)
+    }
+}
 
 module.exports = connectDB;

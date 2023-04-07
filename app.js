@@ -1,37 +1,36 @@
-require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
+const connectDB = require('./db/connect')
+const products = require('./data/products')
+const dotenv = require('dotenv');
+const cors = require('cors');
 const app = express();
 
-
-const morgan = require('morgan')
 //database
-const connectDB = require('./db/connect')
-
+dotenv.config()
 
 //ROUTERS
-const authRouter = require('./routes/authRoutes')
-
-
-
+const productRoutes = require('./routes/productRoutes')
 
 //middleware
+app.use(cors());
 app.use(express.json())
-app.use(morgan('tiny'))
-
 
 app.get('/', (req, res) => {
     res.send("dej-market started")
 })
 
 
-app.use('/api/market/auth', authRouter)
+app.use('/api/products', productRoutes)
 
 
 
 const port = process.env.PORT || 8000;
 const start = async () => {
     try {
-        await connectDB(process.env.MONGO_URL)
+        await connectDB(process.env.MONGO_URI)
+        // console.log('MONGO_URI:', process.env.MONGO_URI);
+
       app.listen(port, () =>
         console.log(`Server is listening on port ${port}...`)
       );
