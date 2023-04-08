@@ -1,29 +1,27 @@
+const asyncHandler = require('express-async-handler')
 
-const createProduct = async (req, res) => {
-    res.send('create product')
-}
-const getAllProducts = async (req, res) => {
-    res.send('get all products')
-}
-const getSingleProduct = async (req, res) => {
-    res.send('get single product')
-}
-const updateProduct = async (req, res) => {
-    res.send('update product')
-}
-const deleteProduct = async (req, res) => {
-    res.send('delete product')
-}
-const uploadImage = async (req, res) => {
-    res.send('upload image')
+const Product = require('../models/Product')
+
+const getAllProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+  res.json(products)
+})
+
+const getProductById = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    res.json(product);
+  } else {
+    res.status(404)
+    throw new Error('Product not found');
+  }
+});
+
+module.exports = {
+  getAllProducts,
+  getProductById
 }
 
-module.export = {
-    createProduct,
-    getAllProducts,
-    getSingleProduct,
-    updateProduct,
-    deleteProduct,
-    uploadImage,
 
-}
+

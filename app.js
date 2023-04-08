@@ -11,6 +11,7 @@ dotenv.config()
 
 //ROUTERS
 const productRoutes = require('./routes/productRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 //middleware
 app.use(cors());
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
 
 
 
