@@ -36,10 +36,11 @@ const protect = asyncHandler(async (req, res, next) => {
       next()
     } else {
       res.status(401)
+      console.log(req.user);
+
       throw new Error("Not authorized as an admin")
     }
   }
-
 
 
   module.exports = protect
