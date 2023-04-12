@@ -5,7 +5,7 @@ const User = require('../models/User')
 
 const protect = asyncHandler(async (req, res, next) => {
     let token
-  
+
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith('Bearer')
@@ -43,5 +43,7 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 
 
-  module.exports = protect
-  module.exports =  admin 
+  // module.exports =  admin 
+  // module.exports = protect
+  module.exports = { protect, admin };
+
