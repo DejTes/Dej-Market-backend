@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const app = express();
 
-//database
+
 dotenv.config()
 
 //ROUTERS
@@ -27,10 +27,13 @@ app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
 
+
 // PAYPAL
+
 app.get('/api/config/paypal', (req, res) => 
   res.send(process.env.PAYPAL_CLIENT_ID))
 
+  
   
 const port = process.env.PORT || 8000;
 const start = async () => {

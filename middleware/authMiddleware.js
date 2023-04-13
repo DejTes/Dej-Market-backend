@@ -43,7 +43,6 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 
 
-  // module.exports =  admin 
-  // module.exports = protect
+  
   module.exports = { protect, admin };
 

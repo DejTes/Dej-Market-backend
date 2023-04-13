@@ -1,6 +1,7 @@
 
 const express = require('express');
 const router = express.Router()
+const { protect, admin } = require('../middleware/authMiddleware')
 const { 
     getAllProducts, 
     getProductById, 
@@ -10,8 +11,7 @@ const {
     getTopProducts
 } = require('../controllers/productController')
 
-const protect = require('../middleware/authMiddleware')
-const admin  = require('../middleware/authMiddleware')
+
 
 
 // console.log(getAllProducts);
