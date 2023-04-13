@@ -6,7 +6,8 @@ const {
     getProductById, 
     deleteProduct, 
     updateProduct,
-    createProduct
+    createProduct,
+    getTopProducts
 } = require('../controllers/productController')
 
 const protect = require('../middleware/authMiddleware')
@@ -24,7 +25,8 @@ const admin  = require('../middleware/authMiddleware')
 
 router.get("/", getAllProducts);
 // router.post("/", protect, admin, createProduct);
-router.post("/",createProduct);
+router.post("/", createProduct);
+router.get("/top", getTopProducts);
 
 router.get("/:id", getProductById);
 // router.delete("/:id", protect, admin, deleteProduct);

@@ -93,6 +93,24 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 })
 
+// Get top rated products products
+
+// const getTopProducts = asyncHandler(async (req, res) => {
+//   const products = await Product.find({}).sort({ rating: -1 }).limit(3)
+
+//   res.json(products)
+// })
+
+
+// get new products 
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({ new: true })
+    .select('-rating')
+    .limit(4)
+  res.json(products)
+})
+
+
 
 
 module.exports = {
@@ -101,6 +119,7 @@ module.exports = {
   deleteProduct,
   createProduct,
   updateProduct,
+  getTopProducts
 }
 
 
