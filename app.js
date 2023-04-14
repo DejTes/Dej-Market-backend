@@ -23,10 +23,6 @@ const uploadRoutes = require('./routes/uploadRoutes')
 app.use(cors());
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send("dej-market started")
-})
-
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
