@@ -55,20 +55,20 @@ const createProduct = asyncHandler(async (req, res) => {
     description,
   } = req.body;
 
-  const product = new Product({
-    name: name || "Sample name",
-    price: price || 0,
-    // user: req.user._id,
-    image: image || "/images/sample.jpg",
-    brand: brand || "Sample brand",
-    category: category || "Sample category",
-    countInStock: countInStock || 0,
-    numReviews: numReviews || 0,
-    description: description || "Sample description",
-  });
+  // const product = new Product({
+  //   name: name || "Sample name",
+  //   price: price || 0,
+  //   // user: req.user._id,
+  //   image: image || "/images/sample.jpg",
+  //   brand: brand || "Sample brand",
+  //   category: category || "Sample category",
+  //   countInStock: countInStock || 0,
+  //   numReviews: numReviews || 0,
+  //   description: description || "Sample description",
+  // });
 
-  const createdProduct = await product.save();
-  res.status(201).json(createdProduct);
+  // const createdProduct = await product.save();
+  // res.status(201).json(createdProduct);
 });
 
 //   Update a product
