@@ -8,7 +8,7 @@ const products = [
     price: 2500,
     countInStock: 20,
     rating: 5,
-    numReviews: 10,
+    numOfReviews: 10,
   },
   {
     name: 'MSI-Vector 15.6" 165hz',
@@ -20,7 +20,7 @@ const products = [
     price: 2069.99,
     countInStock: 9,
     rating: 4.5,
-    numReviews: 5,
+    numOfReviews: 5,
   },
   {
     name: 'HP ENVY x360',
@@ -32,7 +32,7 @@ const products = [
     price: 849.99,
     countInStock: 5,
     rating: 3,
-    numReviews: 12,
+    numOfReviews: 12,
   },
   {
     name: 'Inspiron 14 2-in-1 Laptop',
@@ -44,7 +44,7 @@ const products = [
     price: 399.99,
     countInStock: 10,
     rating: 4.8,
-    numReviews: 20,
+    numOfReviews: 20,
   },
   {
     name: 'Latitude 5530 Laptop',
@@ -56,7 +56,7 @@ const products = [
     price: 1079.99,
     countInStock: 10,
     rating: 4.5,
-    numReviews: 7,
+    numOfReviews: 7,
   },
   {
     name: 'HP DRAGONFLY FOLIO',
@@ -68,7 +68,7 @@ const products = [
     price: 2749,
     countInStock: 2,
     rating: 4,
-    numReviews: 2,
+    numOfReviews: 2,
   },
 ]
 
