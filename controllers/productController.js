@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-
+const mongoose = require("mongoose");
 const Product = require("../models/Product");
 
 const getAllProducts = asyncHandler(async (req, res) => {
@@ -16,6 +16,8 @@ const getAllProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
+
+// get product by id
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -27,18 +29,22 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
+
 // DELETE PRODUCT
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (product) {
-    await product.remove();
+    await Product.deleteOne({ _id: req.params.id });
     res.json({ message: "Product removed" });
   } else {
     res.status(404);
     throw new Error("Product not found");
   }
 });
+
+
+
 
 // CREATE PRODUCT
 //POST REQUEST
@@ -51,25 +57,28 @@ const createProduct = asyncHandler(async (req, res) => {
     brand,
     category,
     countInStock,
-    numReviews,
+    numOfReviews,
     description,
   } = req.body;
 
-  // const product = new Product({
-  //   name: name || "Sample name",
-  //   price: price || 0,
-  //   // user: req.user._id,
-  //   image: image || "/images/sample.jpg",
-  //   brand: brand || "Sample brand",
-  //   category: category || "Sample category",
-  //   countInStock: countInStock || 0,
-  //   numReviews: numReviews || 0,
-  //   description: description || "Sample description",
-  // });
+  const product = new Product({
+    name: name || "Sample name",
+    price: price || 0,
+    user: req.user._id,
+    image: image || "/images/sample.jpg",
+    brand: brand || "apple",
+    category: category || "2-in-1",
+    countInStock: countInStock || 0,
+    numOfReviews: numOfReviews || 0,
+    description: description || "Sample description",
+  });
 
-  // const createdProduct = await product.save();
-  // res.status(201).json(createdProduct);
+  const createdProduct = await product.save();
+  res.status(201).json(createdProduct);
 });
+
+
+
 
 //   Update a product
 //   PUT
