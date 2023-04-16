@@ -4,11 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node dej-market-backend/app",
-    "server": "nodemon dej-market-backend/app",
+    "start": "node dej-market-backend/app.js",
+    "server": "nodemon dej-market-backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "data:import": "node Dej-Market-backend/seeder",
-    "data:destroy": "node Dej-Market-backend/seeder -d"
+    "data:destroy": "node Dej-Market-backend/seeder -d",
+    "postinstall": "NPM_CONFIG_PRODUCTION=false npm install --prefix dej-market && npm run build --prefix dej-market"
+
   },
   "repository": {
     "type": "git",
