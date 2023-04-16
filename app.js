@@ -12,10 +12,6 @@ connectDB();
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("API IS WORKING......");
-});
-
 //ROUTERS
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -40,17 +36,21 @@ app.get("/api/config/paypal", (req, res) =>
 
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
+
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/dej-market/build")));
+  app.use(express.static(path.join(__dirname, "../dej-market/build")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "dej-market", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname,'..', "dej-market", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
     res.send("API is running....");
   });
 }
+
+
+
 
 const port = process.env.PORT || 8000;
 const uri = process.env.MONGO_URI;
