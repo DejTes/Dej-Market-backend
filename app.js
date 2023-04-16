@@ -34,7 +34,7 @@ app.get("/api/config/paypal", (req, res) =>
 
 //making upload folder static, a route to serve static files from the uploads directory.
 
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+//app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 
 // if (process.env.NODE_ENV === "production") {
