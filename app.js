@@ -12,6 +12,10 @@ connectDB();
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
+
 //ROUTERS
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
